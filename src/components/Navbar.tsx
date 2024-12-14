@@ -1,55 +1,67 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import  { useState } from 'react';
-
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu =() => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div className='container pt-8'>
-        <div className='flex justify-between items-center'>
-            <div className='text-xl font-medium'>Azka</div>
-            <ul className='gap-10 lg:gap-16 hiddenn md:flex'>
-                <li className='menueLink'><a href='#hero'> Home</a></li>
-                <li className='menueLink'><a href='#about'>About</a></li>
-                <li className='menueLink'><a href='#projects'></a>Projects</li>
-                <li className='menueLink'><a href='skills'></a>Skills</li>
-                <li className='menueLink'><a href='#contact'></a>Contact</li>
-            </ul>
-            <div className='md:hidden onClick={toggleMenu}'>
-              {isMenuOpen ? <AiOutlineClose size={30} /> :
-              <AiOutlineMenu size={30} />
-              }
-            </div>
+    <nav className="container mx-auto px-4 pt-8">
+      {/* Navbar container */}
+      <div className="flex justify-between items-center">
+        {/* Logo */}
+        <div className="text-xl font-medium">Azka</div>
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-10 lg:gap-16">
+          <li className="menuLink">
+            <a href="#hero">Home</a>
+          </li>
+          <li className="menuLink">
+            <a href="#about">About</a>
+          </li>
+          <li className="menuLink">
+            <a href="#projects">Projects</a>
+          </li>
+          <li className="menuLink">
+            <a href="#skills">Skills</a>
+          </li>
+          <li className="menuLink">
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
+
+        {/* Mobile Menu Icon */}
+        <div className="md:hidden" onClick={toggleMenu}>
+          {isMenuOpen ? <AiOutlineClose size={30} /> : <AiOutlineMenu size={30} />}
         </div>
-        
-        {isMenuOpen && (
-          <ul className='flex flex-col gap-4 mt-4 md:hidden'>
-            <li className='menuLink'>
-             <a href='#hero' onClick={toggleMenu}>Home</a>
-            </li>
-            <li className='menuLink'>
-             <a href='#about' onClick={toggleMenu}>About</a>
-            </li>
-            <li className='menuLink'>
-             <a href='#projects' onClick={toggleMenu}>Projects</a>
-            </li>
-            <li className='menuLink'>
-             <a href='#skills' onClick={toggleMenu}>Skills</a>
-            </li>
-            <li className='menuLink'>
-             <a href='#contact' onClick={toggleMenu}>Contact</a>
-            </li>
-          </ul>
-        )
+      </div>
 
-        }
-    </div>
-  )
-}
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <ul className="flex flex-col gap-4 mt-4 md:hidden bg-white shadow-md p-4 rounded-lg">
+          <li className="menuLink">
+            <a href="#hero" onClick={toggleMenu}>Home</a>
+          </li>
+          <li className="menuLink">
+            <a href="#about" onClick={toggleMenu}>About</a>
+          </li>
+          <li className="menuLink">
+            <a href="#projects" onClick={toggleMenu}>Projects</a>
+          </li>
+          <li className="menuLink">
+            <a href="#skills" onClick={toggleMenu}>Skills</a>
+          </li>
+          <li className="menuLink">
+            <a href="#contact" onClick={toggleMenu}>Contact</a>
+          </li>
+        </ul>
+      )}
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;
